@@ -32,6 +32,21 @@ class Connexion extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const data = { mail: this.state.email, password: this.state.password };
+    const fetch_param = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data)
+    };
+    console.log(data);
+    this.callApi(`${PathToBack}userLogin`, fetch_param)
+      .then(response => {
+        // this.forceUpdate();
+        console.log(response);
+        // window.location.reload();
+      })
+      .catch(err => console.log(err));
+  }
   };
 
   componentDidMount() {
