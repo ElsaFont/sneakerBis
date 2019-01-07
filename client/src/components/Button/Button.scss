@@ -1,0 +1,29 @@
+.btn-page1 {
+  display: flex;
+  padding-top: 20px;
+  .btn-acheter {
+    width: 190px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    transition: 2s;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+  .btn-savoir-plus {
+    width: 190px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+    margin-left: 50px;
+    cursor: pointer;
+    transition: 2s;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}

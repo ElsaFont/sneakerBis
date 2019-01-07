@@ -1,0 +1,19 @@
+footer {
+  width: 100%;
+  height: 40vh;
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .logo {
+    width: 30px;
+  }
+  ul {
+    line-height: 30px;
+  }
+}

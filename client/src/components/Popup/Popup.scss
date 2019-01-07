@@ -1,0 +1,50 @@
+.mask {
+  height: 100vh;
+  background: rgba(233, 232, 232, 0.8);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 7;
+}
+
+.popup {
+  background: white;
+  border: 2px solid black;
+  //border-radius: 15px;
+  height: auto;
+  padding: 60px 0px 60px 0px;
+  width: 40%;
+}
+
+.textSpan {
+  font-size: 30px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// .btnValider {
+//   background: white;
+//   border: 2px solid black;
+//   border-radius: 15px;
+//   cursor: pointer;
+//   width: 120px;
+//   height: 60px;
+//   color: black;
+//   font-weight: 400;
+//   font-size: 22px;
+//   margin-top: 20px;
+// }
+
+.inputPopUp {
+  width: 70%;
+  height: 70px;
+  border: 1px solid black;
+  margin-top: 20px;
+}

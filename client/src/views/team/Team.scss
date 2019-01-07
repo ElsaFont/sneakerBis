@@ -1,0 +1,39 @@
+.siteTeam {
+  width: 100%;
+  height: 50vh;
+  display: inline-block;
+  margin-top: 150px;
+  .teamChoc {
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: -77px;
+    height: 50px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 43%;
+  }
+  .picteam {
+    height: 80vh;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //margin-left: 8%;
+  }
+  .pic {
+    width: auto;
+    height: 520px;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: background-size 1s ease-in;
+    -webkit-transition: background-size 2s ease-in;
+    -moz-transition: background-size 2s ease-in;
+    -o-transition: background-size 2s ease-in;
+    -ms-transition: background-size 2s ease-in;
+    &:hover {
+      background-size: 150% 150%;
+    }
+  }
+}

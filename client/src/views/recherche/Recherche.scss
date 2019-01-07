@@ -1,0 +1,129 @@
+.site {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  .recherche {
+    width: 79.8%;
+    height: 140px;
+    border: 1px solid black;
+    text-align: center;
+    margin-left: 10%;
+    p {
+      line-height: 70px;
+    }
+  }
+
+  .marques1 {
+    width: 80%;
+    min-width: 320px;
+    height: auto;
+    display: flex;
+    margin-left: 10%;
+    flex-wrap: wrap;
+    /*position: absolute;*/
+    .nom {
+      width: 9.07%;
+      //min-width: 320px;
+      height: 70px;
+      border: 1px solid black;
+      text-align: center;
+      padding-top: 25px;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+        list-style: none;
+        color: black;
+      }
+    }
+  }
+
+  .marques {
+    width: 100%;
+    //height: 80vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    perspective: 900px;
+  }
+  .page {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .shoes {
+    perspective: 800px;
+  }
+  .shoes:hover .page {
+    transform: rotateY(180deg);
+    //transform-origin: 50 0;
+  }
+
+  .shoes,
+  .avant,
+  .arriere {
+    //width: 26%;
+    min-width: 382px;
+    height: 40vh;
+    border: 0.5px solid black;
+    cursor: pointer;
+  }
+
+  .avant,
+  .arriere {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .page {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .avant {
+    z-index: 2;
+    transform: rotateY(0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arriere {
+    transform: rotateY(180deg);
+    background: white;
+    width: 26.5%;
+    height: 40vh;
+    color: black;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .sizePic {
+    max-width: 250px;
+    max-height: 300px;
+  }
+
+  .plus {
+    width: 14.33%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid black;
+    margin-left: 43%;
+    transition: 1s;
+    font-size: 16px;
+    &:hover {
+      // background: black;
+      // color: white;
+      box-shadow: 7px 5px 5px rgb(161, 161, 161);
+    }
+  }
+
+  .cart {
+    width: 35px;
+  }
+}

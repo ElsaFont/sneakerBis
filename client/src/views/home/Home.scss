@@ -1,0 +1,26 @@
+.site {
+  width: 100%;
+  height: 100vh;
+  #dimension {
+    width: 950px;
+    height: 80vh;
+    box-shadow: 10px 10px 5px lightgray;
+    margin-left: 200px;
+    border: 1px solid lightgray;
+    margin-top: 150px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .imgaccueil {
+      width: 700px;
+      height: 500px;
+      position: relative;
+      margin-left: 118px;
+      padding-top: 70px;
+      z-index: -1;
+    }
+  }
+}
