@@ -35,10 +35,12 @@ class Footer extends Component {
             <img
               src={require("./img/noun_Facebook_2049749_FFFFFF.png")}
               className="logo"
+              alt="icon_facebook"
             />
             <img
               src={require("./img/noun_Twitter_2049755_FFFFFF.png")}
               className="logo"
+              alt="icon-twitter"
             />
           </figure>
           <ul>

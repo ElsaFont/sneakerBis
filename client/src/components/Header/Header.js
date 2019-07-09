@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Popup from "../../components/Popup/Popup";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Logo from "../Logo/Logo";
 import "./Header.scss";
@@ -35,6 +35,9 @@ class Header extends Component {
               </Link>
             </li>
             <li>
+              {/* <Link to="/popup" onClick={this.toggleDialog}>
+                RECHERCHE
+              </Link> */}
               <a href="#" className="link" onClick={this.toggleDialog}>
                 RECHERCHE
               </a>

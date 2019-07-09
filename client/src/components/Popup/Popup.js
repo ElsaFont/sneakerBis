@@ -7,67 +7,47 @@ class Popup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      redirect: false,
-      items: [],
-      filter: "",
-      message: false,
-      todo: []
+      items: [], // initialItems du tuto
+      filterItems: [], // items du tuto
+      currentItem: {
+        text: "",
+        key: ""
+      }
     };
     this.updateSearch = this.updateSearch.bind(this);
-    this.filter = this.filter.bind(this);
   }
 
-  updateSearch(inputValue) {
-    //let filter = this.state.filter;
-    //console.log(this.state.value);
-    this.setState({
-      filter: inputValue,
-      value: this.state.value + inputValue //.substr(0, 20)
-    });
-    console.log("je console le this", this.state.value);
-  }
-
-  // handleChange(event) {
-  //   console.log(this.updateSearch);
-  //   //this.state.updateSearch(event.target.value);
-  //   //this.setState({ search: event.target.value.substr(0, 20) });
-  // }
-
-  filter(e) {
-    // if (!this.props.filter) {
-    //   return items;
-    // }
-    // return items.filter(
-    //   items =>
-    //     items.toLowerCase().indexOf(this.state.filter.toLowerCase()) !== -1 //>= 0
-    // );
-    var updatedList = this.state.items;
-    updatedList = updatedList.filter(item => {
-      return item.toLowerCase().search(e.target.value.toLowerCase()) !== -1;
-    });
-    this.setState({
-      todo: updatedList
-    });
-    if (updatedList === 0) {
-      this.setState({
-        message: true
-      });
-    } else {
-      this.setState({
-        message: false
-      });
-    }
-  }
-
-  componentDidMount() {
-    this.callApi("/api/product")
+  updateSearch = () => {
+    //e.preventDefault();
+    this.callApi(`/api/product/`)
       .then(items => {
-        //console.log(items);
-        this.setState({ todo: this.state.items });
+        this.setState({ items });
         sessionStorage.clear();
+        console.log("je suis dans la fonction du pop-up", items);
       })
       .catch(err => console.log(err));
+    let searchItem = this.state.items;
+    searchItem = searchItem.filter(item => {
+      return item.toLowerCase();
+    });
+    this.setState({
+      //todos: searchItem,
+      items: this.state.searchItem
+    });
+    console.log("searchItem =>", searchItem);
+  };
+
+  componentWillMount() {
+    // this.callApi("/api/product")
+    //   .then(items => {
+    //     this.setState({ items });
+    //     sessionStorage.clear();
+    //     console.log(items);
+    //   })
+    //   .catch(err => console.log(err));
+    // this.setState({
+    //   items: this.state.filterItems
+    // });
   }
 
   callApi = async url => {
@@ -82,33 +62,22 @@ class Popup extends React.Component {
       <Fragment>
         <div className="mask">
           <div className="popup">
-            {/* {this.filter(this.state.items).map(item => { */}
-            {/* {this.state.todo.map(item => {
-              return ( */}
             <form className="form">
-              <ul>
-                {this.state.todo.map(todo => {
-                  return (
-                    <li key={Math.floor(Math.random() * 10000) + 1}>{todo}</li>
-                  );
-                })}
-                {this.state.message ? <li>No search results.</li> : ""}
-              </ul>
-              <input
-                className="inputPopUp"
-                type="text"
-                placeholder="Recherchez un modèle"
-                onChange={e => this.updateSearch(e.target.value)}
-                //onChange={e => this.updateSearch(this.state.filter)}
-                //onChange={this.state.filter}
-                //value={this.state.filter}
-                //value={item.marque}
-                //items={this.state.item}
-                //searchText={this.state.filter}
-                required
-              />
+              {this.state.items.map(it => {
+                return (
+                  <input
+                    className="inputPopUp"
+                    onChange={this.updateSearch}
+                    data-category={it}
+                    key={it}
+                    type="text"
+                    placeholder="Recherchez un modèle"
+                    required
+                  />
+                );
+              })}
+              {/* <button type="submit">Rechercher</button> */}
             </form>
-            {/* ); })} */}
           </div>
         </div>
       </Fragment>

@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import Button from "../../components/Button/Button";
 
-import "./BackOffice.scss";
+import "./Account.scss";
+import Header from "../../components/Header/Header";
 
 class Connexion extends Component {
   render() {
     return (
       <Fragment>
+        <Header />
         <div className="siteBack">
           <div className="section">
             <nav className="nav">
@@ -15,6 +17,9 @@ class Connexion extends Component {
                 <li>MON COMPTE</li>
                 <li>HISTORIQUE</li>
                 <li>MES ACHATS</li>
+                <Link to="/annonces">
+                  <li>MES ANNONCES</li>
+                </Link>
               </ul>
             </nav>
             <article className="droite">

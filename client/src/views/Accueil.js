@@ -15,7 +15,11 @@ class Accueil extends Component {
     return (
       <Fragment>
         <div className="App">
-          <Header to={{ pathname: "/accueil" }} />
+          <Header
+            to={{
+              pathname: "/"
+            }}
+          />
           <Home />
           <SecondePage />
           <Recherche />

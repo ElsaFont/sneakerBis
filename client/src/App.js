@@ -10,7 +10,7 @@ import Recherche from "./views/recherche/Recherche";
 import Accueil from "./views/Accueil";
 import Connexion from "./views/connexion/Connexion";
 import Inscription from "./views/inscription/Inscription";
-import BackOffice from "./views/backoffice/BackOffice";
+import Account from "./views/accounts/Account";
 import Cgv from "./views/cgv/Cgv";
 import Nous from "./views/nous/Nous";
 
@@ -27,7 +27,7 @@ class App extends Component {
           <Route path="/recherche" component={Recherche} />
           <Route path="/cgv" component={Cgv} />
           <Route path="/nous" component={Nous} />
-          <Route path="/backoffice" component={BackOffice} />
+          <Route path="/account" component={Account} />
           {/* <Route exact path="/" component={Home} />
           <Route path="/accueil" component={Header} />
           <Route path="/accueil" component={SecondePage} />

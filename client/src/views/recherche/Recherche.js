@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 import "./Recherche.scss";
 
@@ -9,71 +9,68 @@ class Recherche extends React.Component {
 
     this.state = {
       items: [],
+      filteredItems: [],
       visible: 6,
       error: false,
       brands: [],
       show: 11
+      //currentItem: false,
+      //underlineItem: null
     };
 
     this.loadMore = this.loadMore.bind(this);
     this.filterItems = this.filterItems.bind(this);
+    // this.underlineCurrentItem = this.underlineCurrentItem.bind(this);
   }
+  //fonction qui reprend le this.state.visible et au clique sur le bouton ajoute 6 items de plus.
   loadMore() {
     this.setState(prev => {
       return { visible: prev.visible + 6 };
     });
   }
 
-  showBrands() {
-    this.setState(prev => {
-      return { show: prev.show + 8 };
+  // fonction qui au clique filtre les items par marques
+  filterItems = brandid => {
+    // const copyItems = [...this.state.items];
+    // console.log("avant", copyItems);
+    // const filteredItemsByBrands = copyItems.filter(
+    //   item => item.marque_id1 === idbrand
+    // );
+    // this.setState(state => {
+    //   return { filteredItems: filteredItemsByBrands };
+    // });
+    //console.log("après", filteredItemsByBrands);
+    this.callApi(`/api/product/${brandid}`)
+      .then(items => {
+        this.setState({ items });
+        sessionStorage.clear();
+        console.log("je reviens de la database", items);
+      })
+      .catch(err => console.log(err));
+  };
+
+  toggle() {
+    this.setState({
+      currentItem: !this.state.currentItem
     });
   }
 
-  filterItems = idbrand => {
-    this.setState(state => {
-      // return console.log("=>", idbrand, state);
-      const x = state.items.filter(item => {
-        return item.marque_id1 === idbrand;
-      });
-      console.log(x);
-    });
-  };
-
-  // transformResults = campagnes => {
-  //   if (!campagnes || campagnes.length === 0) return null;
-  //   const chapterWithQuestions = {};
-  //   campagnes.forEach(function(e) {
-  //     if (!chapterWithQuestions[e.chapitre_q]) {
-  //       chapterWithQuestions[e.chapitre_q] = [e];
-  //     } else {
-  //       chapterWithQuestions[e.chapitre_q].push(e);
-  //     }
+  // underlineCurrentItem() {
+  //   this.setState({
+  //     underlineItem: "underline"
   //   });
-  //   return chapterWithQuestions;
-  // };
+  // }
 
+  // chargera les données des components distants.
   componentDidMount() {
     this.callApi("/api/product")
       .then(items => {
-        //console.log(items);
         this.setState({ items });
         sessionStorage.clear();
+        //console.log(items);
       })
       .catch(err => console.log(err));
 
-    //ON AFFICHE LE NOM DES MARQUES POUR LE FILTRE
-    // sessionStorage.setItem("id_brand");
-    // const currentBrandId = sessionStorage.getItem("id_brand");
-    // this.callApi(`/api/brand/${currentBrandId}`)
-    //   .then(response => {
-    //     //console.log(response[0].id_brand);
-    //     sessionStorage
-    //       .set("currentBrandId", response[0].id_brand)
-    //       .then(response => response.json())
-    //       .then(this.onLoad);
-    //   })
-    //   .catch(err => console.log(err));
     this.callApi("/api/brand")
       .then(brands => {
         //console.log(items);
@@ -84,16 +81,10 @@ class Recherche extends React.Component {
   }
 
   callApi = async url => {
-    // const items = await fetch("/api/product");
     const items = await fetch(url);
-    // const brands = await fetch(`brand/:id_brand`);
-    const brands = await fetch(`url`);
     const body = await items.json();
-    // const labelBrands = await brands.json();
     if (items.status !== 200) throw Error(body.message);
     return body;
-    // if (brands.status !== 200) throw Error(labelBrands.message);
-    // return labelBrands;
   };
 
   render() {
@@ -106,10 +97,14 @@ class Recherche extends React.Component {
           {this.state.brands.slice(0, this.state.show).map(brand => {
             return (
               <div
-                onClick={e => this.filterItems(brand.id)}
+                // au clique déclenche la fonction filterItems
+                onClick={e => this.filterItems(brand.id_marque)}
                 className="nom"
+                //id={brand.id_marque}
+                // la clé est l'id de la BDD
                 key={brand.id}
               >
+                {/* affiche les noms des brands, label est le nom dans la BDD */}
                 <div>{brand.label}</div>
               </div>
             );
@@ -117,12 +112,16 @@ class Recherche extends React.Component {
         </div>
         <div className="marques">
           <Fragment>
+            {/* ici on boucle sur les annonces  */}
+            {}
             {this.state.items.slice(0, this.state.visible).map(item => {
               return (
+                // ici on importe l'id de l'annonce
                 <div className="shoes" key={item.id}>
                   <div className="page">
                     <div className="avant">
                       <figure>
+                        {/* ici on importe la photo de l'annonce */}
                         <img
                           src={item.photo_1}
                           alt="afficher les sneakers"
@@ -131,12 +130,14 @@ class Recherche extends React.Component {
                       </figure>
                     </div>
                     <div className="arriere">
+                      {/* ici ce sont les informations qui vont s'afficher au backface de l'annonce*/}
                       <div>{item.saler_id} </div>
                       <div>{item.marque}</div>
                       <div>{item.modèle}</div>
                       <div>{item.prix} €</div>
                       <div>{item.taille}</div>
                       <img
+                        //ici on ajoute le produit au panier
                         src={require("./img/cart.png")}
                         alt="move_to_bag"
                         className="cart"
@@ -148,6 +149,7 @@ class Recherche extends React.Component {
             })}
           </Fragment>
         </div>
+        {/* ici on boucle sur le bouton qui effectue une pagination*/}
         {this.state.visible < this.state.items.length && (
           <button onClick={this.loadMore} type="button" className="plus">
             VOIR PLUS

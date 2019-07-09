@@ -212,7 +212,7 @@ class Cgv extends Component {
             <a
               href="http://www.mediateurfevad.fr"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               http://www.mediateurfevad.fr
             </a>
@@ -222,7 +222,7 @@ class Cgv extends Component {
             <a
               href="http://www.fevad.com/mediation"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               http://www.fevad.com/mediation
             </a>
@@ -240,7 +240,7 @@ class Cgv extends Component {
             <a
               href="https://webgate.ec.europa.eu/odr/"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               https://webgate.ec.europa.eu/odr/
             </a>

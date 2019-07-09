@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 import "./Team.scss";
 
@@ -19,9 +19,21 @@ class Footer extends Component {
         <section className="siteTeam">
           <p className="teamChoc">NOTRE TEAM DE CHOC</p>
           <figure className="picteam">
-            <img src={require("./img/brooke-cagle2.jpg")} className="pic" />
-            <img src={require("./img/brooke-cagle2.jpg")} className="pic" />
-            <img src={require("./img/brooke-cagle2.jpg")} className="pic" />
+            <img
+              src={require("./img/brooke-cagle2.jpg")}
+              className="pic"
+              alt="team"
+            />
+            <img
+              src={require("./img/brooke-cagle2.jpg")}
+              className="pic"
+              alt="team"
+            />
+            <img
+              src={require("./img/brooke-cagle2.jpg")}
+              className="pic"
+              alt="team"
+            />
           </figure>
         </section>
       </Fragment>
